@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: byteforge-judge
+  datasource:
+    url: jdbc:h2:mem:byteforge;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+byteforge:
+  jwt:
+    secret: change-me-secret-key
+    issuer: byteforge
+    expiration-minutes: 120
+  judge:
+    workspace-root: ${java.io.tmpdir}/byteforge/workspace
+    execution-timeout-ms: 5000
+    memory-limit-mb: 256
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
