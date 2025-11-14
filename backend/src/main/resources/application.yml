@@ -23,7 +23,7 @@ server:
 
 byteforge:
   jwt:
-    secret: change-me-secret-key
+    secret: ${BYTEFORGE_JWT_SECRET:30b6f5db7e3d4c6f95b9c2e1fda6a1cbe4c5721c308f9159c2d7e4f1ab9c3d7e}
     issuer: byteforge
     expiration-minutes: 120
   judge:
